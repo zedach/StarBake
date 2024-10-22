@@ -1,10 +1,17 @@
 version : 1
 extract:
+#  output:
+#    separator: ","
+#    withHeader: true
   connectionRef: "duckdb" # The database connection to use
   jdbcSchemas:
     - schema: "starbake"
       tables:
-        - name: "*"               # table names or  "*" to extract all tables
+        - name: "order"                     # table names or  "*" to extract all tables
+#          sql: "select * from starbake.order"  # User defined query
+#          fullExport: false           # (optional) set to true to do a full export
+#          partitionColumn: "order_id" # (optional) column to use for incremental extraction
+#          numPartitions: 4            # Level of parallelism (defaults to 1 aka no parallelism)
       tableTypes:                 # (optional)  table types to extract
         - "TABLE"
         #- "VIEW"
