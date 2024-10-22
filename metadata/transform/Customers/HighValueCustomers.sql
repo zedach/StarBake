@@ -1,7 +1,7 @@
 SELECT
     *
 FROM
-    CustomerLifetimeValue
+    Customers.CustomerLifetimeValue
 ORDER BY
     lifetime_value DESC
 LIMIT 3
