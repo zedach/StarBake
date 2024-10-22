@@ -1,9 +1,7 @@
 import pathlib
 
 import pandas as pd
-import numpy as np
-import json
-import glob
+
 pd.set_option('display.max_colwidth', None)
 
 source_dir = str(pathlib.Path(__file__).parent.resolve().parent) + '/_data/source'

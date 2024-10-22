@@ -118,10 +118,10 @@ for i in range(1, 6):
     bakery_products = ['Chocolate Cake', 'Vanilla Cupcake', 'Blueberry Muffin', 'Cinnamon Roll', 'Baguette', 'Croissant', 'Apple Pie', 'Brioche', 'Sourdough Bread', 'Raspberry Tart']
     bakery_ingredients = ['Flour', 'Sugar', 'Eggs', 'Milk', 'Butter', 'Baking Powder', 'Vanilla Extract', 'Cocoa Powder', 'Cinnamon', 'Blueberries', 'Raspberries', 'Apples', 'Yeast', 'Salt']
 
-    generate_customer_data(5)
-    generate_ingredient_data(5)
-    generate_product_data(5)
-    generate_order_data(10)
+    generate_customer_data(500)
+    generate_ingredient_data(14)
+    generate_product_data(10)
+    generate_order_data(10000)
 
     dir_path = f"{data_dir}/day_{i}"
     # create data_dir if not exist
