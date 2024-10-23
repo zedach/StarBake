@@ -18,7 +18,7 @@ starlake extract-data --config metadata/extract/my_extract_config.sl.yml --outpu
 
 ```shell 
 # show audit table 
-duckdb sample-data/starbake/duckdb.db 
+duckdb datasets/duckdb.db 
  ```
 
 ```shell 
