@@ -12,7 +12,7 @@ application:
     duckdb:
       type: "jdbc" # Connection to DuckDB
       options:
-        url: "jdbc:duckdb:{{SL_ROOT}}/sample-data/starbake/duckdb.db" # Location of the DuckDB database
+        url: "jdbc:duckdb:{{SL_ROOT}}/datasets/duckdb.db" # Location of the DuckDB database
         driver: "org.duckdb.DuckDBDriver"
     bigquery:
       type: "bigquery"
