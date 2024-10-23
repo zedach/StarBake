@@ -1,7 +1,7 @@
 # Starlake Demo 
 
 
-##  Step 0
+##  Step 0 – Bootstrap
 
 ```shell 
 # Starlake Bootstrap 
