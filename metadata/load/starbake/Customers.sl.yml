@@ -1,0 +1,42 @@
+---
+version: 1
+table:
+  name: "Customers"
+  pattern: "customers_extract.*.csv"
+  attributes:
+  - name: "customer_id"
+    type: "int"
+    array: false
+    sample: "1"
+  - name: "first_name"
+    type: "string"
+    array: false
+    sample: "Michael"
+  - name: "last_name"
+    type: "string"
+    array: false
+    sample: "Morgan"
+  - name: "email"
+    type: "string"
+    array: false
+    sample: "sbrooks@example.com"
+  - name: "join_date"
+    type: "date"
+    array: false
+    sample: "2023-12-10"
+  metadata:
+    format: "DSV"
+    withHeader: true
+    separator: ","
+    writeStrategy:
+      type: "APPEND"
+  sample: "[1,Michael,Morgan,sbrooks@example.com,2023-12-10]\n[2,Cynthia,Torres,vegajohn@example.com,2024-04-18]\n\
+    [3,Andrea,Perez,qwilkins@example.com,2024-07-11]\n[4,Heather,Young,jenniferpoole@example.com,2023-12-01]\n\
+    [5,Adam,Harris,katherinedavis@example.org,2024-03-18]\n[6,Samantha,Smith,todd38@example.net,2024-03-20]\n\
+    [7,Patrick,Keller,emily12@example.com,2024-10-18]\n[8,Christian,Johnson,sandrapark@example.net,2024-08-08]\n\
+    [9,Anthony,Lee,michael58@example.com,2024-04-12]\n[10,Craig,Lynch,stacey18@example.com,2023-12-09]\n\
+    [11,Jackie,Burke,davenportbenjamin@example.net,2024-09-06]\n[12,Jason,Valdez,levinestephanie@example.com,2023-10-29]\n\
+    [13,Tyler,Patterson,kyle71@example.com,2023-11-09]\n[14,Marvin,Irwin,carlosgardner@example.org,2024-07-24]\n\
+    [15,Johnny,Ayala,renee38@example.net,2024-07-02]\n[16,Thomas,Adams,phillippatterson@example.com,2023-10-25]\n\
+    [17,Destiny,Murphy,austin44@example.com,2024-07-04]\n[18,James,Smith,zmoore@example.com,2024-03-17]\n\
+    [19,Kyle,Estrada,amymyers@example.org,2024-04-16]\n[20,Veronica,White,daniel86@example.net,2024-05-02]"
