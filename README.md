@@ -9,7 +9,7 @@ starlake bootstrap
 
 ```
 
-## Step 1
+## Step 1 – Extract
 
 ```shell 
 # extract
