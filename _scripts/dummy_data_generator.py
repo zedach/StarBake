@@ -124,19 +124,19 @@ for i in range(1, 6):
     generate_product_data(10)
     generate_order_data(10000)
 
-    _date = datetime.today().strftime('%Y%m%d%H%m%s')
+    _date = datetime.today().strftime('%Y%m')
     dir_path = f"{data_dir}/day_{i}"
     # create data_dir if not exist
     Path(dir_path).mkdir(parents=True, exist_ok=True)
 
     # Save to files
     df_customers = pd.DataFrame(customer_rows, columns=customer_cols)
-    df_customers.to_csv(f"{dir_path}/customers_extract_{_date}.csv", index=False)
+    df_customers.to_csv(f"{dir_path}/customers_extract_000{i}.csv", index=False)
 
     df_ingredients = pd.DataFrame(ingredient_rows, columns=ingredient_cols)
-    df_ingredients.to_csv(f"{dir_path}/ingredients_extract_{_date}.tsv", sep='\t', index=False)
+    df_ingredients.to_csv(f"{dir_path}/ingredients_extract_000{i}.tsv", sep='\t', index=False)
 
-    with open(f"{dir_path}/products_extract_{_date}.json", 'w') as f:
+    with open(f"{dir_path}/products_extract_000{i}.json", 'w') as f:
         for row in product_rows:
             json.dump({
                 "product_id": row[0],
@@ -146,7 +146,7 @@ for i in range(1, 6):
             }, f)
             f.write('\n')
 
-    with open(f"{dir_path}/orders_extract_{_date}.json", 'w') as f:
+    with open(f"{dir_path}/orders_extract_000{i}.json", 'w') as f:
         orders = []
         for row in order_rows:
             orders.append({
