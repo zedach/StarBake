@@ -4,98 +4,75 @@ table:
   name: "Products"
   pattern: "products_extract.*.json"
   attributes:
-  - name: "details"
-    type: "struct"
+  - name: "product_id"
+    type: "int"
     array: false
-    attributes:
-    - name: "category"
-      type: "string"
-      array: false
-      sample: "bread"
-    - name: "description"
-      type: "string"
-      array: false
-      sample: "This delicious Chocolate Cake is made with the finest ingredients and\
-        \ baked to perfection."
-    - name: "price"
-      type: "double"
-      array: false
-      sample: "27.07"
-  - name: "ingredients"
-    type: "struct"
-    array: true
-    attributes:
-    - name: "ingredient_id"
-      type: "long"
-      array: false
-      sample: "14"
-    - name: "quantity"
-      type: "double"
-      array: false
-      sample: "0.17"
+    required: true
+    privacy: "NONE"
+    ignore: false
   - name: "name"
     type: "string"
     array: false
-    sample: "Chocolate Cake"
-  - name: "product_id"
-    type: "long"
+    required: true
+    privacy: "NONE"
+    ignore: false
+  - name: "details"
+    type: "struct"
     array: false
-    sample: "1"
+    required: true
+    privacy: "NONE"
+    attributes:
+    - name: "price"
+      type: "double"
+      array: false
+      required: true
+      privacy: "NONE"
+      ignore: false
+    - name: "description"
+      type: "string"
+      array: false
+      required: false
+      privacy: "NONE"
+      ignore: false
+    - name: "category"
+      type: "string"
+      array: false
+      required: false
+      privacy: "NONE"
+      ignore: false
+    ignore: false
+  - name: "ingredients"
+    type: "struct"
+    array: true
+    required: true
+    privacy: "NONE"
+    attributes:
+    - name: "ingredient_id"
+      type: "int"
+      array: false
+      required: true
+      privacy: "NONE"
+      foreignKey: "Ingredients.ingredient_id" # declare foreign key
+      ignore: false
+    - name: "quantity"
+      type: "double"
+      array: false
+      required: true
+      privacy: "NONE"
+      ignore: false
+    ignore: false
   metadata:
     format: "JSON"
-    withHeader: true
+    encoding: "UTF-8"
+    multiline: false
+    array: false
+    withHeader: false
+    separator: ""
+    quote: "\""
+    escape: "\\"
     writeStrategy:
       type: "APPEND"
-  sample: "{\"details\":{\"category\":\"bread\",\"description\":\"This delicious Chocolate\
-    \ Cake is made with the finest ingredients and baked to perfection.\",\"price\"\
-    :27.07},\"ingredients\":[{\"ingredient_id\":14,\"quantity\":0.17},{\"ingredient_id\"\
-    :4,\"quantity\":3.47},{\"ingredient_id\":13,\"quantity\":0.12},{\"ingredient_id\"\
-    :8,\"quantity\":2.89},{\"ingredient_id\":11,\"quantity\":4.33}],\"name\":\"Chocolate\
-    \ Cake\",\"product_id\":1}\n{\"details\":{\"category\":\"pastry\",\"description\"\
-    :\"This delicious Brioche is made with the finest ingredients and baked to perfection.\"\
-    ,\"price\":33.51},\"ingredients\":[{\"ingredient_id\":5,\"quantity\":2.32},{\"\
-    ingredient_id\":4,\"quantity\":4.33},{\"ingredient_id\":13,\"quantity\":1.5},{\"\
-    ingredient_id\":1,\"quantity\":4.41},{\"ingredient_id\":3,\"quantity\":4.62}],\"\
-    name\":\"Brioche\",\"product_id\":2}\n{\"details\":{\"category\":\"pastry\",\"\
-    description\":\"This delicious Vanilla Cupcake is made with the finest ingredients\
-    \ and baked to perfection.\",\"price\":19.29},\"ingredients\":[{\"ingredient_id\"\
-    :4,\"quantity\":0.83},{\"ingredient_id\":8,\"quantity\":2.16},{\"ingredient_id\"\
-    :14,\"quantity\":3.67},{\"ingredient_id\":5,\"quantity\":3.8},{\"ingredient_id\"\
-    :7,\"quantity\":2.75}],\"name\":\"Vanilla Cupcake\",\"product_id\":3}\n{\"details\"\
-    :{\"category\":\"pastry\",\"description\":\"This delicious Cinnamon Roll is made\
-    \ with the finest ingredients and baked to perfection.\",\"price\":49.41},\"ingredients\"\
-    :[{\"ingredient_id\":2,\"quantity\":0.31},{\"ingredient_id\":14,\"quantity\":1.44},{\"\
-    ingredient_id\":4,\"quantity\":0.51},{\"ingredient_id\":7,\"quantity\":3.2},{\"\
-    ingredient_id\":5,\"quantity\":0.45}],\"name\":\"Cinnamon Roll\",\"product_id\"\
-    :4}\n{\"details\":{\"category\":\"pastry\",\"description\":\"This delicious Croissant\
-    \ is made with the finest ingredients and baked to perfection.\",\"price\":18.0},\"\
-    ingredients\":[{\"ingredient_id\":3,\"quantity\":4.68},{\"ingredient_id\":14,\"\
-    quantity\":3.17},{\"ingredient_id\":1,\"quantity\":2.33},{\"ingredient_id\":7,\"\
-    quantity\":2.79},{\"ingredient_id\":4,\"quantity\":2.77}],\"name\":\"Croissant\"\
-    ,\"product_id\":5}\n{\"details\":{\"category\":\"bread\",\"description\":\"This\
-    \ delicious Apple Pie is made with the finest ingredients and baked to perfection.\"\
-    ,\"price\":25.43},\"ingredients\":[{\"ingredient_id\":2,\"quantity\":0.44},{\"\
-    ingredient_id\":7,\"quantity\":0.41},{\"ingredient_id\":6,\"quantity\":4.8},{\"\
-    ingredient_id\":11,\"quantity\":3.4},{\"ingredient_id\":14,\"quantity\":1.93}],\"\
-    name\":\"Apple Pie\",\"product_id\":6}\n{\"details\":{\"category\":\"bread\",\"\
-    description\":\"This delicious Baguette is made with the finest ingredients and\
-    \ baked to perfection.\",\"price\":28.3},\"ingredients\":[{\"ingredient_id\":11,\"\
-    quantity\":1.8},{\"ingredient_id\":5,\"quantity\":3.71},{\"ingredient_id\":12,\"\
-    quantity\":3.68},{\"ingredient_id\":4,\"quantity\":1.02},{\"ingredient_id\":8,\"\
-    quantity\":4.07}],\"name\":\"Baguette\",\"product_id\":7}\n{\"details\":{\"category\"\
-    :\"bread\",\"description\":\"This delicious Raspberry Tart is made with the finest\
-    \ ingredients and baked to perfection.\",\"price\":31.1},\"ingredients\":[{\"\
-    ingredient_id\":3,\"quantity\":1.17},{\"ingredient_id\":5,\"quantity\":2.47},{\"\
-    ingredient_id\":8,\"quantity\":2.08},{\"ingredient_id\":9,\"quantity\":3.15},{\"\
-    ingredient_id\":11,\"quantity\":4.18}],\"name\":\"Raspberry Tart\",\"product_id\"\
-    :8}\n{\"details\":{\"category\":\"bread\",\"description\":\"This delicious Sourdough\
-    \ Bread is made with the finest ingredients and baked to perfection.\",\"price\"\
-    :41.58},\"ingredients\":[{\"ingredient_id\":12,\"quantity\":4.96},{\"ingredient_id\"\
-    :7,\"quantity\":1.43},{\"ingredient_id\":11,\"quantity\":0.96},{\"ingredient_id\"\
-    :1,\"quantity\":1.35},{\"ingredient_id\":10,\"quantity\":2.49}],\"name\":\"Sourdough\
-    \ Bread\",\"product_id\":9}\n{\"details\":{\"category\":\"cake\",\"description\"\
-    :\"This delicious Blueberry Muffin is made with the finest ingredients and baked\
-    \ to perfection.\",\"price\":5.04},\"ingredients\":[{\"ingredient_id\":12,\"quantity\"\
-    :1.16},{\"ingredient_id\":14,\"quantity\":3.08},{\"ingredient_id\":7,\"quantity\"\
-    :3.31},{\"ingredient_id\":6,\"quantity\":1.69},{\"ingredient_id\":10,\"quantity\"\
-    :4.19}],\"name\":\"Blueberry Muffin\",\"product_id\":10}"
+    sink:
+      connectionRef: "{{connectionRef}}"
+  primaryKey:
+  - "product_id"

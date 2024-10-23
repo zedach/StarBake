@@ -7,27 +7,39 @@ table:
   - name: "ingredient_id"
     type: "int"
     array: false
-    sample: "1"
+    required: true
+    privacy: "NONE"
+    ignore: false
   - name: "name"
     type: "string"
     array: false
-    sample: "Butter"
+    required: true
+    privacy: "NONE"
+    ignore: false
   - name: "price"
-    type: "double"
+    type: "decimal"
     array: false
-    sample: "3.1"
+    required: true
+    privacy: "NONE"
+    ignore: false
   - name: "quantity_in_stock"
-    type: "double"
+    type: "decimal"
     array: false
-    sample: "65.17"
+    required: true
+    privacy: "NONE"
+    ignore: false
   metadata:
     format: "DSV"
+    encoding: "UTF-8"
+    multiline: false
+    array: false
     withHeader: true
     separator: "\t"
+    quote: "\""
+    escape: "\\"
     writeStrategy:
-      type: "APPEND"
-  sample: "[1,Butter,3.1,65.17]\n[2,Cocoa Powder,3.66,33.14]\n[3,Apples,0.9,55.73]\n\
-    [4,Flour,4.69,52.75]\n[5,Eggs,6.06,24.71]\n[6,Cinnamon,3.31,44.42]\n[7,Milk,9.39,72.29]\n\
-    [8,Blueberries,8.84,33.33]\n[9,Salt,7.38,74.32]\n[10,Vanilla Extract,0.65,14.21]\n\
-    [11,Sugar,9.18,81.53]\n[12,Baking Powder,3.83,89.76]\n[13,Raspberries,3.87,12.46]\n\
-    [14,Yeast,7.2,37.54]"
+      type: "OVERWRITE"
+    sink:
+      connectionRef: "{{connectionRef}}"
+  primaryKey:
+  - "ingredient_id"
