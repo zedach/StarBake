@@ -64,6 +64,11 @@ starlake infer-schema --domain starbake --table Ingredients --input datasets/inc
 ```
 
 ```shell 
+# Edit inferred Yaml
+git checkout 575603fdf -- ./metadata/load/starbake/
+```
+
+```shell 
 # Import from incoming to pending 
 starlake import
 ```
