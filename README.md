@@ -65,7 +65,7 @@ starlake infer-schema --domain starbake --table Ingredients --input datasets/inc
 
 ```shell 
 # Edit inferred Yaml
-git checkout 575603fdf -- ./metadata/load/starbake/
+git checkout 1d6a75c9f -- ./metadata/load/starbake/
 ```
 
 ```shell 
