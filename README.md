@@ -25,3 +25,51 @@ duckdb datasets/duckdb.db
 # SQL audit extraction
 select * from audit.SL_LAST_EXPORT order by end_ts desc;
 ```
+
+## Step 2 – Load
+
+```shell 
+# Create a virtual environment (optional) 
+python3 -m pip install virtualenv && python3 -m venv .venv
+```
+
+```shell 
+# Activate the virtual environment (optional) 
+source .venv/bin/activate
+```
+
+```shell 
+# Generate dummy files 
+python3 -m pip install -r _scripts/requirements.txt && python3 _scripts/dummy_data_generator.py
+```
+
+```shell 
+# infer schema from sample files 
+starlake infer-schema --domain starbake --table Customers --input datasets/incoming/starbake/day_1/customers_extract_0001.csv
+```
+
+```shell 
+# infer schema from sample files 
+starlake infer-schema --domain starbake --table Orders --input datasets/incoming/starbake/day_1/orders_extract_0001.json
+```
+
+```shell 
+# infer schema from sample files 
+starlake infer-schema --domain starbake --table Products --input datasets/incoming/starbake/day_1/products_extract_0001.json
+```
+
+```shell 
+# infer schema from sample files 
+starlake infer-schema --domain starbake --table Ingredients --input datasets/incoming/starbake/day_1/ingredients_extract_0001.tsv 
+```
+
+```shell 
+# Import from incoming to pending 
+starlake import
+```
+
+```shell 
+# Import from incoming to pending 
+starlake load
+```
+
