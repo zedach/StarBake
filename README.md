@@ -40,7 +40,8 @@ source .venv/bin/activate
 
 ```shell 
 # Generate dummy files 
-python3 -m pip install -r _scripts/requirements.txt && python3 _scripts/dummy_data_generator.py
+python3 -m pip install -r _scripts/requirements.txt 
+python3 _scripts/dummy_data_generator.py
 ```
 
 ```shell 
@@ -183,14 +184,41 @@ starlake import
 ### RUN with Airflow
 
 ```shell 
-# Generate DAGs 
-starlake dag-generate --clean
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+. "$HOME/.cargo/env" 
+pip install apache-airflow
+pip install apache-airflow-providers-google
+pip install starlake-orchestration
+
 ```
 
 ```shell 
-# Load the DAGs in airflow 
-mkdir -p projects/dags
-cp -r metadata/dags/generated/* projects/dags/
+#Installer Apache Airflow
+mkdir -p airflow-local/dags
+cd airflow-local
+```
+```shell 
+
+# Init airflow
+airflow db init
+airflow users create \
+  --username admin \
+  --firstname Prénom \
+  --lastname Nom \
+  --role Admin \
+  --email admin@example.com
+```
+
+
+```shell 
+# Accéder à l'interface web d'Airflow
+airflow scheduler &
+airflow webserver --port 8080 &
+```
+
+```shell 
+# Generate DAGs 
+starlake dag-generate --clean --outputDir airflow-local/dags/
 ```
 
 ```shell 

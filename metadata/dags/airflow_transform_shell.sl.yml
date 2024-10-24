@@ -1,6 +1,8 @@
 dag:
     comment: "sample dag configuration"
     template: "transform/airflow__scheduled_task__shell.py.j2"
-    filename: "airflow_all_tasks.py"
+    filename: "{{domain}}_{{table}}_airflow.py"
     options:
-        load_dependencies: "true"
+        load_dependencies: "false"
+        sl_env_var: "{\"SL_ROOT\": \"{{SL_ROOT}}\", \"SL_ENV\": \"BQ\"}"
+        tags: "starlake"
