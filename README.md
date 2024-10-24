@@ -89,6 +89,56 @@ gcloud config set project starlake-demo
 # load to Bigquery  https://console.cloud.google.com/bigquery?project=starlake-demo
 SL_ENV=BQ starlake load
 ```
+## Step 3 – Transform
 
+```shell 
+# Write transform sql query
+git checkout 8892e67a -- ./metadata/transform
+git checkout d3ffbaef -- ./metadata/env.BQ.sl.yml
+git checkout d3ffbaef -- ./metadata/env.sl.yml
+```
 
+```shell 
+# Create datasets if not
+bq mk --location=europe-west1 --dataset starlake-demo:Customers
+bq mk --location=europe-west1 --dataset starlake-demo:Products
+```
 
+```shell 
+# Export BQ env
+export SL_ENV="BQ"
+echo $SL_ENV
+```
+
+```shell 
+# Run the transformations in order ⬇️ 
+starlake transform --name Customers.CustomerLifetimeValue
+```
+```shell 
+starlake transform --name Customers.HighValueCustomers
+```
+```shell 
+starlake transform --name Products.ProductProfitability
+```
+```shell 
+starlake transform --name Products.MostProfitableProducts
+```
+```shell 
+starlake transform --name Products.ProductPerformance
+```
+```shell 
+starlake transform --name Products.TopSellingProducts
+```
+```shell 
+starlake transform --name Products.TopSellingProfitableProducts
+```
+
+```shell 
+# Run the transformations recursively 🌀
+starlake transform --name Customers.HighValueCustomers --recursive 
+```
+
+```shell 
+# Run the transformations recursively 🌀
+starlake transform --name Products.TopSellingProfitableProducts --recursive
+```
