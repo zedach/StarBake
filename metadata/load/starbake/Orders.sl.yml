@@ -15,7 +15,6 @@ table:
     array: false
     required: true
     privacy: "NONE"
-    foreignKey: "Customers.customer_id"
     ignore: false
   - name: "timestamp"
     type: "iso_instant"
@@ -68,5 +67,3 @@ table:
       type: "APPEND"
     sink:
       connectionRef: "{{connectionRef}}"
-  primaryKey:
-  - "order_id"

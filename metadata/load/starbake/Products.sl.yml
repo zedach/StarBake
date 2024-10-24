@@ -52,7 +52,6 @@ table:
       array: false
       required: true
       privacy: "NONE"
-      foreignKey: "Ingredients.ingredient_id" # declare foreign key
       ignore: false
     - name: "quantity"
       type: "double"
@@ -74,5 +73,3 @@ table:
       type: "APPEND"
     sink:
       connectionRef: "{{connectionRef}}"
-  primaryKey:
-  - "product_id"

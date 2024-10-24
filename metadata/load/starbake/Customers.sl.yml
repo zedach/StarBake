@@ -47,5 +47,3 @@ table:
       type: "OVERWRITE" # Override global config
     sink:
       connectionRef: "{{connectionRef}}" #  use same connection ref
-  primaryKey:
-  - "customer_id"  # Usefull for transformation
