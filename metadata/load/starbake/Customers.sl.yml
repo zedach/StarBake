@@ -34,6 +34,8 @@ table:
     required: true
     privacy: "NONE"
     ignore: false
+  expectations:
+    - "is_col_value_not_unique('customer_id') => result(0) == 1"
   metadata:
     format: "DSV"
     encoding: "UTF-8"
