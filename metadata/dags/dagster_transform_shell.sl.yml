@@ -3,6 +3,6 @@ dag:
     template: "transform/dagster__scheduled_task__shell.py.j2"
     filename: "dagster_all_tasks.py"
     options:
-        sl_env_var: "{\"SL_ROOT\": \"{{SL_ROOT}}\"}"
-        SL_STARLAKE_PATH: "{{SL_ROOT}}/starlake"
+        sl_env_var: "{\"SL_ROOT\": \"{{SL_ROOT}}\", \"SL_ENV\": \"BQ\"}"
+        SL_STARLAKE_PATH: "{{HOME}}/bin/starlake/starlake"
         load_dependencies: "True" # load all dependencies for each transform job, 'False' by default
