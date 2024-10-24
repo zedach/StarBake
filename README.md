@@ -179,3 +179,21 @@ DAGSTER_HOME=${PWD} dagster dev \
 # Import from incoming to pending 
 starlake import
 ```
+
+### RUN with Airflow
+
+```shell 
+# Generate DAGs 
+starlake dag-generate --clean
+```
+
+```shell 
+# Load the DAGs in airflow 
+mkdir -p projects/dags
+cp -r metadata/dags/generated/* projects/dags/
+```
+
+```shell 
+# Import from incoming to pending 
+starlake import
+```
