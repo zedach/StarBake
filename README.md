@@ -142,3 +142,33 @@ starlake transform --name Customers.HighValueCustomers --recursive
 # Run the transformations recursively 🌀
 starlake transform --name Products.TopSellingProfitableProducts --recursive
 ```
+
+## Step 4 – Orchestration 
+
+### RUN with Dagster
+```shell 
+# Install the dagster webserver 
+python3 -m pip install dagster-webserver
+```
+
+```shell 
+# Install the starlake dagster libraries for shell 
+python3 -m pip install 'starlake-dagster[shell]'
+```
+
+```shell 
+# Generate DAGs 
+starlake dag-generate --clean
+```
+
+```shell 
+# Load the DAGs with dagster 
+DAGSTER_HOME=${PWD} dagster dev \
+    -f metadata/dags/generated/load/dagster_all_load.py \
+    -f metadata/dags/generated/transform/dagster_all_tasks.py 
+```
+
+```shell 
+# Import from incoming to pending 
+starlake import
+```
