@@ -146,6 +146,7 @@ starlake transform --name Products.TopSellingProfitableProducts --recursive
 ## Step 4 – Orchestration 
 
 ### RUN with Dagster
+
 ```shell 
 # Install the dagster webserver 
 python3 -m pip install dagster-webserver
@@ -155,6 +156,12 @@ python3 -m pip install dagster-webserver
 # Install the starlake dagster libraries for shell 
 python3 -m pip install 'starlake-dagster[shell]'
 ```
+
+```shell 
+# use dagster dag template
+git checkout bb4a38a158 -- metadata/application.sl.yml
+```
+
 
 ```shell 
 # Generate DAGs 
