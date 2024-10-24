@@ -74,7 +74,21 @@ starlake import
 ```
 
 ```shell 
-# Import from incoming to pending 
+# load to default env 
 starlake load
 ```
+
+```shell 
+# Configure gcloud connection 
+gcloud auth application-default login 
+gcloud config set project starlake-demo
+```
+
+
+```shell 
+# load to Bigquery  https://console.cloud.google.com/bigquery?project=starlake-demo
+SL_ENV=BQ starlake load
+```
+
+
 
